@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="My suite" parallel="tests">
+    <test name="All">
+        <classes>
+            <class name="scenarios.FirefoxTest" />
+        </classes>
+    </test>
+    <test name="AccuWeather">
+        <classes>
+            <class name="scenarios.AccuWeather" />
+        </classes>
+    </test>
+    <test name="ProgressTest">
+        <classes>
+            <class name="scenarios.ProgressTest" />
+        </classes>
+    </test>
+    <test name="Zikit">
+        <classes>
+            <class name="scenarios.Zikit" />
+        </classes>
+    </test>
+</suite>
