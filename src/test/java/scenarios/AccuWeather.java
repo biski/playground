@@ -1,6 +1,5 @@
 package scenarios;
 
-import engine.Browser;
 import engine.TestInstance;
 import engine.annotations.UseBrowser;
 import org.testng.annotations.Test;
@@ -23,8 +22,8 @@ public class AccuWeather extends TestInstance {
 
         new MainPage(this)
                 .getSearch()
-                .click()
-                .search(CITY)
+                .clickSearch()
+                .fillSearchInput(CITY)
                 .chooseCity(CITY);
 
 

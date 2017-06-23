@@ -43,4 +43,9 @@ public abstract class Page {
     public WaitTool waitFor() {
         return new WaitTool(testInstance);
     }
+
+    public WaitTool waitFor(String desc) {
+        return new WaitTool(testInstance).withDesc(desc);
+    }
+
 }

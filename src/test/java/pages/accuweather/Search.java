@@ -2,6 +2,7 @@ package pages.accuweather;
 
 import engine.Page;
 import engine.TestInstance;
+import engine.elements.Input;
 import engine.tools.ScreenShot;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -19,7 +20,7 @@ public class Search extends Page {
     }
 
     @Step
-    public Search click() {
+    public Search clickSearch() {
 
         find(locate(SEARCH_INPUT)).click();
 
@@ -30,11 +31,11 @@ public class Search extends Page {
     }
 
     @Step
-    public MenuCities search(String city) {
+    public MenuCities fillSearchInput(String city) {
 
         find(locate(SEARCH_INPUT)).sendKeys(city);
 
-        waitFor().visibility(new MenuCities(testInstance).cityWithName(city));
+        waitFor("city [" + city + "] hint").visibility(new MenuCities(testInstance).cityWithName(city));
 
         return new MenuCities(testInstance);
     }

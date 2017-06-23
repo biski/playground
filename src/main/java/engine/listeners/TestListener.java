@@ -3,10 +3,12 @@ package engine.listeners;
 import engine.TestInstance;
 import engine.annotations.UseBrowser;
 import engine.reports.TestProgress;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.pagefactory.ByChained;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
@@ -44,15 +46,23 @@ public class TestListener extends TestListenerAdapter {
         Throwable throwable = tr.getThrowable();
 
         String functionFromPage = "";
+        StackTraceElement stackTraceElementFromPage = null;
         for (StackTraceElement stackTraceElement : tr.getThrowable().getStackTrace()) {
             if(stackTraceElement.getClassName().contains("pages.")) {
                 functionFromPage = stackTraceElement.getMethodName();
             }
         }
 
-        Throwable newThrowable = new AssertionError(
-                "Cannot " + splitCamelCase(functionFromPage) +", " + throwable.getMessage(),
-                throwable);
+        Throwable newThrowable;
+        if(throwable instanceof AssertionError) {
+            newThrowable = new AssertionError(
+                    "Cannot " + splitCamelCase(functionFromPage) + ", " + throwable.getMessage(),
+                    throwable);
+        } else {
+            newThrowable = new AssertionError(
+                    "Cannot " + splitCamelCase(functionFromPage),
+                    throwable);
+        }
         tr.setThrowable(newThrowable);
 
         if(tr.getMethod().getConstructorOrMethod().getMethod().isAnnotationPresent(UseBrowser.class)) {
