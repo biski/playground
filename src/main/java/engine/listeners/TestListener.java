@@ -53,17 +53,20 @@ public class TestListener extends TestListenerAdapter {
             }
         }
 
-        Throwable newThrowable;
-        if(throwable instanceof AssertionError) {
-            newThrowable = new AssertionError(
-                    "Cannot " + splitCamelCase(functionFromPage) + ", " + throwable.getMessage(),
-                    throwable);
-        } else {
-            newThrowable = new AssertionError(
-                    "Cannot " + splitCamelCase(functionFromPage),
-                    throwable);
+        if(!"".equals(functionFromPage)) {
+
+            Throwable newThrowable;
+            if (throwable instanceof AssertionError) {
+                newThrowable = new AssertionError(
+                        "Cannot " + splitCamelCase(functionFromPage) + ", " + throwable.getMessage(),
+                        throwable);
+            } else {
+                newThrowable = new AssertionError(
+                        "Cannot " + splitCamelCase(functionFromPage),
+                        throwable);
+            }
+            tr.setThrowable(newThrowable);
         }
-        tr.setThrowable(newThrowable);
 
         if(tr.getMethod().getConstructorOrMethod().getMethod().isAnnotationPresent(UseBrowser.class)) {
             closeBrowser(testInstance);

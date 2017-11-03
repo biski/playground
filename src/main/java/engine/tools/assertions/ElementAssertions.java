@@ -1,8 +1,8 @@
 package engine.tools.assertions;
 
 import engine.TestInstance;
-import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.asserts.Assertion;
 
 /**
