@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
 
 /**
  * Created by wojciech on 22.04.17.
@@ -37,11 +38,12 @@ public class TimeoutAspect {
             }
         };
 
-        return new SimpleTimeLimiter().callWithTimeout(
-                callable,
-                timeout.value(),
-                timeout.unit(),
-                true
-        );
+        return null;
+//        return new SimpleTimeLimiter().callWithTimeout(
+//                callable,
+//                timeout.value(),
+//                timeout.unit(),
+//                true
+//        );
     }
 }
