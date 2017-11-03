@@ -8,11 +8,8 @@
     <artifactId>selfra</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>gui</module>
-    </modules>
     <properties>
-        <selenium.version>3.4.0</selenium.version>
+        <selenium.version>3.6.0</selenium.version>
         <testng.version>6.9.8</testng.version>
         <java.version>1.8</java.version>
         <aspectj.version>1.8.3</aspectj.version>
