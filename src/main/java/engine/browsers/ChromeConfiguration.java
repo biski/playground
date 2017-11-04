@@ -29,7 +29,7 @@ public class ChromeConfiguration {
         logPrefs.enable(LogType.PERFORMANCE, Level.INFO);
         chromeOptions.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
         chromeOptions.addArguments("window-size=" + ConfigFactory.load().getString("chrome.window-size"));
-
+        chromeOptions.addArguments("--lang=" + ConfigFactory.load().getString("chrome.lang"));
 
         ChromeDriver driver = new ChromeDriver(chromeOptions);
 
