@@ -6,6 +6,7 @@ import engine.annotations.UseBrowser;
 import engine.browsers.ChromeConfiguration;
 import engine.browsers.FirefoxConfiguration;
 import engine.reports.TestProgress;
+import integrations.allure.AllureAttachments;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
@@ -44,6 +45,9 @@ public class TestListener extends TestListenerAdapter {
 
 
         TestInstance testInstance = (TestInstance)tr.getInstance();
+
+
+        AllureAttachments.attachScreenshoot(testInstance);
 
 
         Throwable throwable = tr.getThrowable();
