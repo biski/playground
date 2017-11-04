@@ -1,7 +1,10 @@
 package engine.listeners;
 
+import com.typesafe.config.ConfigFactory;
 import engine.TestInstance;
 import engine.annotations.UseBrowser;
+import engine.browsers.ChromeConfiguration;
+import engine.browsers.FirefoxConfiguration;
 import engine.reports.TestProgress;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -170,15 +173,7 @@ public class TestListener extends TestListenerAdapter {
 
     private void openBrowser(ITestResult result) {
         TestInstance instance = (TestInstance) result.getInstance();
-        System.setProperty("webdriver.gecko.driver", "/home/wojciech/apps/geckodriver/geckodriver");
-        FirefoxBinary firefoxBinary = new FirefoxBinary();
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.setBinary(firefoxBinary);
-        FirefoxDriver firefoxDriver = new FirefoxDriver(firefoxOptions);
-        instance.setDriver(firefoxDriver);
-        String pid = firefoxDriver.getCapabilities().getCapability("moz:processID").toString();
-        System.out.println("processId: " + pid);
-        instance.getBrowser().setPid(((Double)Double.parseDouble(pid)).intValue());
+        new ChromeConfiguration().run(instance);
     }
 
     @Override
