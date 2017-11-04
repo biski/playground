@@ -22,6 +22,10 @@ public class FirefoxConfiguration {
         firefoxOptions.setBinary(firefoxBinary);
         FirefoxDriver firefoxDriver = new FirefoxDriver(firefoxOptions);
         testInstance.setDriver(firefoxDriver);
+        setFirefoxPid(testInstance, firefoxDriver);
+    }
+
+    private void setFirefoxPid(TestInstance testInstance, FirefoxDriver firefoxDriver) {
         String pid = firefoxDriver.getCapabilities().getCapability("moz:processID").toString();
         System.out.println("processId: " + pid);
         testInstance.getBrowser().setPid(((Double)Double.parseDouble(pid)).intValue());
