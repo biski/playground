@@ -28,7 +28,7 @@ public class ChromeConfiguration {
         logPrefs.enable(LogType.BROWSER, Level.ALL);
         logPrefs.enable(LogType.PERFORMANCE, Level.INFO);
         chromeOptions.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
-
+        chromeOptions.addArguments("window-size=" + ConfigFactory.load().getString("chrome.window-size"));
 
 
         ChromeDriver driver = new ChromeDriver(chromeOptions);
