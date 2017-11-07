@@ -1,0 +1,14 @@
+browser {
+  default: chrome
+}
+
+firefox {
+  gecko-path: "/home/wojciech/apps/geckodriver/geckodriver"
+}
+
+chrome {
+  driver-path: "/home/wojciech/apps/chrome-driver/chromedriver"
+  headless: false
+  window-size: "1920,1080"
+  lang = "pl-PL"
+}
