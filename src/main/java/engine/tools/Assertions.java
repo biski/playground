@@ -19,6 +19,10 @@ public class Assertions {
         return new ElementAssertions(testInstance);
     }
 
+    public ElementAssertions element(String name) {
+        return new ElementAssertions(testInstance).withName(name);
+    }
+
     public PageAssertions page() {
         return new PageAssertions(testInstance);
     }
