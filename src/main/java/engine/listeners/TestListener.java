@@ -177,7 +177,18 @@ public class TestListener extends TestListenerAdapter {
 
     private void openBrowser(ITestResult result) {
         TestInstance instance = (TestInstance) result.getInstance();
-        new ChromeConfiguration().run(instance);
+
+        switch (ConfigFactory.load().getString("browser.default")) {
+            case "firefox":
+                new FirefoxConfiguration().run(instance);
+                break;
+            case "chrome":
+                new ChromeConfiguration().run(instance);
+                break;
+            default:
+                throw new RuntimeException("Browser doesn't recognized");
+        }
+
     }
 
     @Override
