@@ -1,4 +1,5 @@
 browser {
+  // available browser: chrome, firefox
   default: chrome
 }
 
