@@ -23,9 +23,9 @@ public class MenuCities extends Page {
 
         find(cityWithName(name)).click();
 
-        waitFor().maxTime(10, TimeUnit.SECONDS).visibility(new NavMain(testInstance).loadedCity("dasdsad"));
+        waitFor().maxTime(10, TimeUnit.SECONDS).visibility(new NavMain(testInstance).loadedCity("Krakow"));
 
-        assertThat().page().titleContainsText("Krakow Weather XXX");
+        assertThat().page().titleContainsText("Krakow Weather");
         assertThat().element().withName("Forecast for tonight").exists(new FeedTabs(testInstance).tabForDay("Tonight"));
 
         return new Forecast(testInstance);
