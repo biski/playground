@@ -46,10 +46,10 @@ public class ProgressTest extends TestInstance {
         System.out.println("Stdout: ");
         System.out.println(baos.toString());
         System.out.println("Checking..");
-        assertTrue(baos.toString().contains("[#0%.................................................]"));
-        assertTrue(baos.toString().contains("[#############25%.....................................]"));
-        assertTrue(baos.toString().contains("[##########################50%........................]"));
-        assertTrue(baos.toString().contains("[######################################75%............]"));
+        assertTrue(baos.toString().contains("[0%..................................................]"));
+        assertTrue(baos.toString().contains("[############25%......................................]"));
+        assertTrue(baos.toString().contains("[#########################50%.........................]"));
+        assertTrue(baos.toString().contains("[#####################################75%.............]"));
         System.out.println("Progress OK");
     }
 

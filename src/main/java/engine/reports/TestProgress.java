@@ -4,6 +4,7 @@ import engine.TestInstance;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 /**
  * Created by wojciech on 22.04.17.
@@ -44,14 +45,10 @@ public class TestProgress {
     private void printProgress(double progressPercentage) {
 
         System.out.print("[");
-        int i = 0;
-        for (; i <= (int) (progressPercentage * PROGRESS_WIDTH); i++) {
-            System.out.print("#");
-        }
+        int i = (int)(progressPercentage * PROGRESS_WIDTH);
+        IntStream.range(0, i).forEach(x -> System.out.print("#"));
         System.out.print((int)(progressPercentage * 100) + "%");
-        for (; i < PROGRESS_WIDTH; i++) {
-            System.out.print(".");
-        }
+        IntStream.range(i, PROGRESS_WIDTH).forEach(x -> System.out.print("."));
         System.out.print("]\n");
     }
 
